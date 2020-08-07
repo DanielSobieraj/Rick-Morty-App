@@ -6,9 +6,9 @@ import {TextField} from '@material-ui/core';
 function App() {
     const [name, setName] = useState("John Doe");
     const [status, setStatus] = useState('unknown');
-    const [imageURL, setImageURL] = useState('https://rickandmortyapi.com/api/character/avatar/5.jpeg');
+    const [imageURL, setImageURL] = useState('https://www.51allout.co.uk/wp-content/uploads/2012/02/Image-not-found-300x300.gif');
     const [species, setSpecies] = useState('');
-    const [location, setLocation] = useState('I don\'t know');
+    const [location, setLocation] = useState('Who knows');
 
 
     useEffect(() => {
@@ -30,6 +30,7 @@ function App() {
                         setStatus('doesn\'t exist');
                         setSpecies('');
                         setLocation('I don\'t know');
+                        setImageURL('https://www.51allout.co.uk/wp-content/uploads/2012/02/Image-not-found-300x300.gif')
                     })
             }, 1500
         );
