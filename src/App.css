@@ -8,6 +8,10 @@
     height: 100vh;
 }
 
+span {
+    color: #E67E22;
+}
+
 .App-logo {
     height: 40vmin;
     pointer-events: none;

@@ -13,3 +13,5 @@ app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 app.listen(port);
+
+//    set PORT=3006 && react-scripts start
