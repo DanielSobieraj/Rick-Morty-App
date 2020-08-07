@@ -6,7 +6,7 @@ import {TextField} from '@material-ui/core';
 function App() {
     const [name, setName] = useState("John Doe");
     const [status, setStatus] = useState(' unknown');
-    const [imageURL, setImageURL] = useState('https://www.geekfeed.com/wp-content/uploads/2019/07/16-Rick-and-Morty-4-300x300.jpg');
+    const [imageURL, setImageURL] = useState('https://i0.wp.com/eagleeye.news/wp-content/uploads/2017/10/rick-and-morty-e1507831459637.jpg');
     const [species, setSpecies] = useState('');
     const [location, setLocation] = useState('Who knows');
 
@@ -30,7 +30,7 @@ function App() {
                         setStatus(' don\'t exist');
                         setSpecies('');
                         setLocation('I don\'t know');
-                        setImageURL('https://www.geekfeed.com/wp-content/uploads/2019/07/16-Rick-and-Morty-4-300x300.jpg')
+                        setImageURL('https://i0.wp.com/eagleeye.news/wp-content/uploads/2017/10/rick-and-morty-e1507831459637.jpg')
                     })
             }, 2000
         );
