@@ -27,7 +27,7 @@ function App() {
                         setLocation(result.location.name)
                     })
                     .catch(() => {
-                        setStatus('doesn\'t exist');
+                        setStatus('don\'t exist');
                         setSpecies('');
                         setLocation('I don\'t know');
                         setImageURL('https://www.51allout.co.uk/wp-content/uploads/2012/02/Image-not-found-300x300.gif')
