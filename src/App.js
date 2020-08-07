@@ -7,7 +7,7 @@ function App() {
     const [name, setName] = useState("John Doe");
     const [status, setStatus] = useState('unknown');
     const [imageURL, setImageURL] = useState('https://rickandmortyapi.com/api/character/avatar/5.jpeg');
-    const [species, setSpecies] = useState();
+    const [species, setSpecies] = useState('');
     const [location, setLocation] = useState('I don\'t know');
 
 
@@ -28,7 +28,7 @@ function App() {
                     })
                     .catch(() =>
                         setStatus('doesn\'t exist'));
-            }, 1000
+            }, 1500
         );
 
         return () => {
@@ -45,7 +45,9 @@ function App() {
             <TextField
                 type="text"
                 onChange={(e) => setName(e.target.value)}
-                label="Type name of character"/>
+                label="Type name of character"
+                color="secondary"
+            />
         </div>
     );
 }
