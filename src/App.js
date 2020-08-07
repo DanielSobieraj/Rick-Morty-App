@@ -26,11 +26,13 @@ function App() {
                         setSpecies('& ' + result.species);
                         setLocation(result.location.name)
                     })
-                    .catch(() =>
-                        setStatus('doesn\'t exist'));
+                    .catch(() => {
+                        setStatus('doesn\'t exist');
+                        setSpecies('');
+                        setLocation('I don\'t know');
+                    })
             }, 1500
         );
-
         return () => {
             clearInterval(getStatusInterval);
         }
@@ -46,7 +48,6 @@ function App() {
                 type="text"
                 onChange={(e) => setName(e.target.value)}
                 label="Type name of character"
-                color="secondary"
             />
         </div>
     );
