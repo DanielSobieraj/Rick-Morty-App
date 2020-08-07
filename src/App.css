@@ -5,10 +5,32 @@
     justify-content: center;
     align-items: center;
     padding: 30px;
+    background: white;
+    width: 300px;
+    opacity: 1;
+}
+
+.card-box {
+    border: 10px solid white;
+    border-radius: 15px;
+}
+
+img {
+    border: 10px solid white;
+    border-radius: 20px;
+}
+
+.background {
+    background: url("https://www.wallpaperflare.com/static/849/456/846/fan-art-digital-art-rick-and-morty-no-man-s-sky-wallpaper.jpg") no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 span {
-    color: #E67E22;
+    color: #B3421B;
 }
 
 .App-logo {

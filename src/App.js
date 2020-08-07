@@ -5,8 +5,8 @@ import {TextField} from '@material-ui/core';
 
 function App() {
     const [name, setName] = useState("John Doe");
-    const [status, setStatus] = useState('unknown');
-    const [imageURL, setImageURL] = useState('https://www.51allout.co.uk/wp-content/uploads/2012/02/Image-not-found-300x300.gif');
+    const [status, setStatus] = useState(' unknown');
+    const [imageURL, setImageURL] = useState('https://www.geekfeed.com/wp-content/uploads/2019/07/16-Rick-and-Morty-4-300x300.jpg');
     const [species, setSpecies] = useState('');
     const [location, setLocation] = useState('Who knows');
 
@@ -21,18 +21,18 @@ function App() {
                     .then(({data}) => {
                         const result = data.results[0];
                         setName(result.name);
-                        setStatus(result.status);
+                        setStatus('\'m ' + result.status);
                         setImageURL(result.image);
                         setSpecies('& ' + result.species);
                         setLocation(result.location.name)
                     })
                     .catch(() => {
-                        setStatus('don\'t exist');
+                        setStatus(' don\'t exist');
                         setSpecies('');
                         setLocation('I don\'t know');
-                        setImageURL('https://www.51allout.co.uk/wp-content/uploads/2012/02/Image-not-found-300x300.gif')
+                        setImageURL('https://www.geekfeed.com/wp-content/uploads/2019/07/16-Rick-and-Morty-4-300x300.jpg')
                     })
-            }, 1500
+            }, 2000
         );
         return () => {
             clearInterval(getStatusInterval);
@@ -40,16 +40,20 @@ function App() {
     });
 
     return (
-        <div className="App">
-            <img src={imageURL}/>
-            <h2>Say hello the classy way,<br/> my dear <span>{name}</span></h2>
-            <h2><span>{name}:</span><br/> Hello, I'm <span>{status} {species}</span></h2>
-            <h2>Last know location: <br/><span>{location}</span></h2>
-            <TextField
-                type="text"
-                onChange={(e) => setName(e.target.value)}
-                label="Type name of character"
-            />
+        <div className="background">
+            <div className="card-box">
+                <div className="App">
+                    <img src={imageURL}/>
+                    <h2>Say hello the classy way,<br/> my dear <span>{name}</span></h2>
+                    <h2>{name}:<br/> Hello, I<span>{status} {species}</span></h2>
+                    <h2>Last know location: <br/><span>{location}</span></h2>
+                    <TextField
+                        type="text"
+                        onChange={(e) => setName(e.target.value)}
+                        label="Type name of character"
+                    />
+                </div>
+            </div>
         </div>
     );
 }
