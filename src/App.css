@@ -23,7 +23,8 @@ img {
 .background {
     background: url("https://www.wallpaperflare.com/static/849/456/846/fan-art-digital-art-rick-and-morty-no-man-s-sky-wallpaper.jpg") no-repeat;
     background-size: cover;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
