@@ -15,3 +15,4 @@ app.get('/*', function (req, res) {
 app.listen(port);
 
 //    set PORT=3006 && react-scripts start
+// node server.js
