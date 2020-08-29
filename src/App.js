@@ -1,7 +1,8 @@
 import './App.css';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {TextField} from '@material-ui/core';
+import {Button, TextField} from '@material-ui/core';
+
 
 function App() {
     const [character, setCharacter] = useState({
@@ -13,10 +14,11 @@ function App() {
         }
     );
 
+    const baseURL = 'https://rickandmortyapi.com/api/character/';
 
     useEffect(() => {
         const getStatusInterval = setInterval(() => {
-                axios.get('https://rickandmortyapi.com/api/character/', {
+                axios.get(baseURL, {
                     params: {
                         name: `${character.name}`
                     }
@@ -25,9 +27,9 @@ function App() {
                         const result = data.results[0];
                         setCharacter({
                             name: result.name,
-                            status: '\'m ' + result.status,
+                            status: `'m ${result.status}`,
                             imageURL: result.image,
-                            species: '& ' + result.species,
+                            species: `& ${result.species}`,
                             location: result.location.name
                         });
                     })
@@ -47,22 +49,32 @@ function App() {
         }
     });
 
+    const characterHandler = (e) => setCharacter({name: e.target.value});
+
     return (
         <div className="background">
             <div className="card-box">
                 <div className="App">
-                    <img src={character.imageURL}/>
-                    <h2>Say hello the classy way,<br/> my dear <span>{character.name}</span></h2>
-                    <h2>{character.name}:<br/> Hello, I<span>{character.status} {character.species}</span></h2>
-                    <h2>Last know location: <br/><span>{character.location}</span></h2>
+                    <img src={character.imageURL} alt={character.name}/>
+                    <p className="mainText">Say hello the classy way, my dear <span>{character.name}</span>
+                    </p>
+
+                    <p className="mainText">
+                        <span> {character.name}</span>: Hello,
+                        I<span>{character.status} {character.species}</span><br/> Last know
+                        location: <br/><span>{character.location}</span>
+                    </p>
                     <TextField
-                        type="text"
-                        onChange={(e) => setCharacter({name: e.target.value})}
-                        label="Type name of character"
+                        onChange={characterHandler}
                     />
+                    <br/>
+                    <Button>
+                        <a href="/catalog">Character Catalog</a>
+                    </Button>
                 </div>
             </div>
         </div>
+
     );
 }
 
