@@ -4,33 +4,41 @@ import axios from 'axios';
 import {TextField} from '@material-ui/core';
 
 function App() {
-    const [name, setName] = useState("John Doe");
-    const [status, setStatus] = useState(' unknown');
-    const [imageURL, setImageURL] = useState('https://i0.wp.com/eagleeye.news/wp-content/uploads/2017/10/rick-and-morty-e1507831459637.jpg');
-    const [species, setSpecies] = useState('');
-    const [location, setLocation] = useState('Who knows');
+    const [character, setCharacter] = useState({
+            name: 'John Doe',
+            status: ' unknown',
+            imageURL: 'https://i0.wp.com/eagleeye.news/wp-content/uploads/2017/10/rick-and-morty-e1507831459637.jpg',
+            species: '',
+            location: 'Who knows'
+        }
+    );
 
 
     useEffect(() => {
         const getStatusInterval = setInterval(() => {
                 axios.get('https://rickandmortyapi.com/api/character/', {
                     params: {
-                        name: `${name}`
+                        name: `${character.name}`
                     }
                 })
                     .then(({data}) => {
                         const result = data.results[0];
-                        setName(result.name);
-                        setStatus('\'m ' + result.status);
-                        setImageURL(result.image);
-                        setSpecies('& ' + result.species);
-                        setLocation(result.location.name)
+                        setCharacter({
+                            name: result.name,
+                            status: '\'m ' + result.status,
+                            imageURL: result.image,
+                            species: '& ' + result.species,
+                            location: result.location.name
+                        });
                     })
                     .catch(() => {
-                        setStatus(' don\'t exist');
-                        setSpecies('');
-                        setLocation('I don\'t know');
-                        setImageURL('https://i0.wp.com/eagleeye.news/wp-content/uploads/2017/10/rick-and-morty-e1507831459637.jpg')
+                        setCharacter({
+                            name: 'Nobody',
+                            status: ' don\'t exist',
+                            species: '',
+                            location: 'I don\'t know',
+                            imageURL: 'https://i0.wp.com/eagleeye.news/wp-content/uploads/2017/10/rick-and-morty-e1507831459637.jpg'
+                        })
                     })
             }, 2000
         );
@@ -43,13 +51,13 @@ function App() {
         <div className="background">
             <div className="card-box">
                 <div className="App">
-                    <img src={imageURL}/>
-                    <h2>Say hello the classy way,<br/> my dear <span>{name}</span></h2>
-                    <h2>{name}:<br/> Hello, I<span>{status} {species}</span></h2>
-                    <h2>Last know location: <br/><span>{location}</span></h2>
+                    <img src={character.imageURL}/>
+                    <h2>Say hello the classy way,<br/> my dear <span>{character.name}</span></h2>
+                    <h2>{character.name}:<br/> Hello, I<span>{character.status} {character.species}</span></h2>
+                    <h2>Last know location: <br/><span>{character.location}</span></h2>
                     <TextField
                         type="text"
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => setCharacter({name: e.target.value})}
                         label="Type name of character"
                     />
                 </div>
