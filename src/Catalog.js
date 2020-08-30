@@ -21,17 +21,21 @@ function Catalog() {
     });
 
     const characters = character.map((character) =>
-        <p key={character.id}>[{character.id}] {character.name} - {character.status}</p>);
+        <div className="characterCard">
+            <img className="characterImage" src={character.image} alt=""/>
+            <p key={character.id}>[{character.id}] {character.name} - {character.status}</p>
+        </div>);
 
     return (
         <div className="background">
+                {characters}
             <div className="card">
-                <div>{characters}</div>
                 <Button>
                     <a href="/">Search character</a>
                 </Button>
             </div>
         </div>
+
     );
 }
 

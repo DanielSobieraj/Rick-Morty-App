@@ -29,6 +29,18 @@
     margin: 100px 0;
 }
 
+.characterCard {
+    background: floralwhite;
+    margin: 15px;
+    width: 20%;
+    text-align: center;
+}
+
+.characterImage {
+    width: 100%;
+    border: 0;
+}
+
 img {
     border: 10px solid white;
     border-radius: 20px;
@@ -42,6 +54,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 span {
