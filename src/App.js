@@ -2,15 +2,12 @@ import './App.css';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Button, TextField} from '@material-ui/core';
+import {Link} from "react-router-dom";
 
 
 function App() {
     const [character, setCharacter] = useState({
             name: 'John Doe',
-            status: ' unknown',
-            imageURL: 'https://i0.wp.com/eagleeye.news/wp-content/uploads/2017/10/rick-and-morty-e1507831459637.jpg',
-            species: '',
-            location: 'Who knows'
         }
     );
 
@@ -49,15 +46,14 @@ function App() {
         }
     });
 
-    const characterHandler = (e) => setCharacter({name: e.target.value});
+    const characterHandler = (e) => setCharacter((prevState) => ({...prevState, name: e.target.value}));
 
     return (
         <div className="background">
             <div className="card-box">
                 <div className="App">
                     <img src={character.imageURL} alt={character.name}/>
-                    <p className="mainText">Say hello the classy way, my dear <span>{character.name}</span>
-                    </p>
+                    <p className="mainText">{`Say hello the classy way, my dear ${character.name}`}</p>
 
                     <p className="mainText">
                         <span> {character.name}</span>: Hello,
@@ -68,9 +64,9 @@ function App() {
                         onChange={characterHandler}
                     />
                     <br/>
-                    <Button>
-                        <a href="/catalog">Character Catalog</a>
-                    </Button>
+                    <Link to="/catalog">
+                        <Button>Character catalog</Button>
+                    </Link>
                 </div>
             </div>
         </div>

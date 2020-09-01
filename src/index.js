@@ -4,19 +4,19 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import Catalog from "./Catalog";
+import {Catalog} from "./Catalog";
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
             <Route
-                path="/"
-                component={App}
+                path="/catalog"
+                component={Catalog}
                 exact
             />
             <Route
-                path="/catalog"
-                component={Catalog}
+                path="/"
+                component={App}
                 exact
             />
         </Router>

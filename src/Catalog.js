@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Button} from '@material-ui/core';
+import {Link} from "react-router-dom";
 
-function Catalog() {
+export function Catalog() {
     const [character, setCharacter] = useState([]);
 
     const baseURL = 'https://rickandmortyapi.com/api/character/';
@@ -39,9 +40,11 @@ function Catalog() {
         <div className="background">
             {characters}
             <div className="card">
-                <Button>
-                    <a href="/">Search character</a>
-                </Button>
+                <Link to="/">
+                    <Button>
+                        Search character
+                    </Button>
+                </Link>
                 <button onClick={prevPage}>Prev Page</button>
                 <button onClick={nextPage}>Next Page</button>
             </div>
@@ -49,5 +52,3 @@ function Catalog() {
 
     );
 }
-
-export default Catalog;
