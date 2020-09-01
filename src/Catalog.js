@@ -8,31 +8,42 @@ function Catalog() {
     const baseURL = 'https://rickandmortyapi.com/api/character/';
 
     useEffect(() => {
-        const getStatusInterval = setInterval(() => {
-                axios.get(baseURL, {})
-                    .then(({data}) => {
-                        setCharacter(data.results);
-                    })
-            }, 2000
-        );
-        return () => {
-            clearInterval(getStatusInterval);
-        }
-    });
+        axios.get(baseURL, {})
+            .then(({data}) => {
+                setCharacter(data.results);
+            })
+    }, []);
+
+
+    function nextPage() {
+        axios.get(`${baseURL}?page=2`)
+            .then(({data}) => {
+                setCharacter(data.results);
+            })
+    }
+
+    function prevPage() {
+        axios.get(`${baseURL}?page=1`)
+            .then(({data}) => {
+                setCharacter(data.results);
+            })
+    }
 
     const characters = character.map((character) =>
         <div className="characterCard">
-            <img className="characterImage" src={character.image} alt=""/>
+            <img className="characterImage" src={character.image} alt={character.name}/>
             <p key={character.id}>[{character.id}] {character.name} - {character.status}</p>
         </div>);
 
     return (
         <div className="background">
-                {characters}
+            {characters}
             <div className="card">
                 <Button>
                     <a href="/">Search character</a>
                 </Button>
+                <button onClick={prevPage}>Prev Page</button>
+                <button onClick={nextPage}>Next Page</button>
             </div>
         </div>
 
