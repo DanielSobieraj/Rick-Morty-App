@@ -50,5 +50,7 @@ export function Catalog() {
             </div>
         </div>
 
+
+
     );
 }

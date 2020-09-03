@@ -46,7 +46,7 @@ function App() {
         }
     });
 
-    const characterHandler = (e) => setCharacter((prevState) => ({...prevState, name: e.target.value}));
+    const characterHandler = (e) => setCharacter({name: e.target.value});
 
     return (
         <div className="background">
