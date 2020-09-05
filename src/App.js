@@ -51,23 +51,25 @@ function App() {
 
     return (
         <div className="background">
-            <div className="card__box">
-                <div className="app">
-                    <img src={character.imageURL} alt={character.name}/>
-                    <p className="main__text">{`Say hello the classy way, my dear ${character.name}`}</p>
+            <div className="container">
+                <div className="card__box">
+                    <div className="app">
+                        <img src={character.imageURL} alt={character.name}/>
+                        <p className="main__text">{`Say hello the classy way, my dear ${character.name}`}</p>
 
-                    <p className="main__text">
-                        <span> {character.name}</span>: Hello,
-                        I<span>{character.status} {character.species}</span><br/> Last know
-                        location: <br/><span>{character.location}</span>
-                    </p>
-                    <TextField
-                        onChange={characterHandler}
-                    />
-                    <br/>
-                    <Link to="/catalog">
-                        <Button>Character catalog</Button>
-                    </Link>
+                        <p className="main__text">
+                            <span> {character.name}</span>: Hello,
+                            I<span>{character.status} {character.species}</span><br/> Last know
+                            location: <br/><span>{character.location}</span>
+                        </p>
+                        <TextField
+                            onChange={characterHandler}
+                        />
+                        <br/>
+                        <Link to="/catalog">
+                            <Button>Character catalog</Button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
