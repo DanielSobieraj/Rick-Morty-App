@@ -8,6 +8,7 @@ import {Link} from "react-router-dom";
 function App() {
     const [character, setCharacter] = useState({
             name: 'John Doe',
+            imageURL: 'https://i0.wp.com/eagleeye.news/wp-content/uploads/2017/10/rick-and-morty-e1507831459637.jpg'
         }
     );
 
@@ -50,12 +51,12 @@ function App() {
 
     return (
         <div className="background">
-            <div className="card-box">
-                <div className="App">
+            <div className="card__box">
+                <div className="app">
                     <img src={character.imageURL} alt={character.name}/>
-                    <p className="mainText">{`Say hello the classy way, my dear ${character.name}`}</p>
+                    <p className="main__text">{`Say hello the classy way, my dear ${character.name}`}</p>
 
-                    <p className="mainText">
+                    <p className="main__text">
                         <span> {character.name}</span>: Hello,
                         I<span>{character.status} {character.species}</span><br/> Last know
                         location: <br/><span>{character.location}</span>

@@ -1,55 +1,68 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useReducer} from 'react';
 import axios from 'axios';
 import {Button} from '@material-ui/core';
 import {Link} from "react-router-dom";
 
-export function Catalog() {
-    const [character, setCharacter] = useState([]);
+function reducer(state, action) {
+    switch (action.type) {
+        case 'nextPage':
+            return state = state + 1;
+        case 'prevPage' :
+            if (state === 1) {
+                return state = 1
+            } else {
+                return state = state - 1;
+            }
+        default:
+            return state
+    }
+}
 
-    const baseURL = 'https://rickandmortyapi.com/api/character/';
+export function Catalog() {
+    const baseURL = 'https://rickandmortyapi.com/api/character/?';
+    const [character, setCharacter] = useState([]);
+    const [state, dispatch] = useReducer(reducer, 1);
 
     useEffect(() => {
-        axios.get(baseURL, {})
+        axios.get(`${baseURL}page=${state}`, {})
             .then(({data}) => {
                 setCharacter(data.results);
             })
-    }, []);
-
+    }, [state]);
 
     function nextPage() {
-        axios.get(`${baseURL}?page=2`)
-            .then(({data}) => {
-                setCharacter(data.results);
-            })
+        dispatch({type: 'nextPage'});
+        console.log(state);
     }
 
     function prevPage() {
-        axios.get(`${baseURL}?page=1`)
-            .then(({data}) => {
-                setCharacter(data.results);
-            })
+        dispatch({type: 'prevPage'});
+        console.log(`${baseURL}page=${state}`);
     }
 
     const characters = character.map((character) =>
-        <div className="characterCard">
-            <img className="characterImage" src={character.image} alt={character.name}/>
-            <p key={character.id}>[{character.id}] {character.name} - {character.status}</p>
+        <div className="character__card" key={character.id}>
+            <img className="character__image" src={character.image} alt={character.name}/>
+            <p key={character.id}>[{character.id}] {character.name} - <span>{character.status}</span></p>
         </div>);
 
     return (
         <div className="background">
-            {characters}
-            <div className="card">
-                <Link to="/">
-                    <Button>
-                        Search character
-                    </Button>
-                </Link>
-                <button onClick={prevPage}>Prev Page</button>
-                <button onClick={nextPage}>Next Page</button>
+            <div className="container">
+                {characters}
+                <div className="footer">
+                    <Link to="/">
+                        <Button>
+                            Search character
+                        </Button>
+                    </Link>
+                    <div className="buttons">
+                        <Button onClick={prevPage}>Prev Page</Button>
+                        <Button onClick={nextPage}>Next Page</Button>
+                    </div>
+                </div>
             </div>
         </div>
-
 
 
     );
