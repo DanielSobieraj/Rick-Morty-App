@@ -1,24 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import {BrowserRouter as Router, Route} from "react-router-dom";
-import {Catalog} from "./Catalog";
+import * as serviceWorker from './services/serviceWorker';
+
+import Home from './components/home/home';
+import {catalog, home} from './common/routes'
+import {Catalog} from "./components/catalog/catalog";
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
-            <Route
-                path="/catalog"
-                component={Catalog}
-                exact
-            />
-            <Route
-                path="/"
-                component={App}
-                exact
-            />
+            <Switch>
+                <Route
+                    path={catalog}
+                    component={Catalog}
+                    exact
+                />
+                <Route
+                    path={home}
+                    component={Home}
+                    exact
+                />
+            </Switch>
         </Router>
     </React.StrictMode>,
     document.getElementById('root')
