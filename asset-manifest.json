@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/RickMortyApp/static/css/main.55844d69.chunk.css",
+    "main.js": "/RickMortyApp/static/js/main.e2048def.chunk.js",
+    "main.js.map": "/RickMortyApp/static/js/main.e2048def.chunk.js.map",
+    "runtime-main.js": "/RickMortyApp/static/js/runtime-main.3188dba7.js",
+    "runtime-main.js.map": "/RickMortyApp/static/js/runtime-main.3188dba7.js.map",
+    "static/js/2.9139db23.chunk.js": "/RickMortyApp/static/js/2.9139db23.chunk.js",
+    "static/js/2.9139db23.chunk.js.map": "/RickMortyApp/static/js/2.9139db23.chunk.js.map",
+    "index.html": "/RickMortyApp/index.html",
+    "precache-manifest.f5be06f79a0c341c3e0082206a196e81.js": "/RickMortyApp/precache-manifest.f5be06f79a0c341c3e0082206a196e81.js",
+    "service-worker.js": "/RickMortyApp/service-worker.js",
+    "static/css/main.55844d69.chunk.css.map": "/RickMortyApp/static/css/main.55844d69.chunk.css.map",
+    "static/js/2.9139db23.chunk.js.LICENSE.txt": "/RickMortyApp/static/js/2.9139db23.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3188dba7.js",
+    "static/js/2.9139db23.chunk.js",
+    "static/css/main.55844d69.chunk.css",
+    "static/js/main.e2048def.chunk.js"
+  ]
+}
